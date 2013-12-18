@@ -1,9 +1,15 @@
+package addressbook;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Contacts extends Object {
+public class Contacts extends Object implements Serializable{
    
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      *  Contacts fields
      */
      private String firstName;
@@ -146,10 +152,8 @@ public class Contacts extends Object {
        }        
         /** Comparator for comparing two contacts by name
          */
-        public static class CompareByName implements Comparator<Contacts>
-        {
-            public int compare(Contacts contact1, Contacts contact2)
-            {
+        public static class CompareByName implements Comparator<Contacts> {
+            public int compare(Contacts contact1, Contacts contact2) {
                 int result = contact1.lastName.compareTo(contact2.lastName);
                 if (result == 0)
                     return contact1.firstName.compareTo(contact2.firstName);
@@ -160,10 +164,8 @@ public class Contacts extends Object {
         
         /** Comparator for comparing two contacts by order of zip code
          */
-        public static class CompareByZip implements Comparator<Contacts>
-        {
-            public int compare(Contacts contact1, Contacts contact2)
-            {
+        public static class CompareByZip implements Comparator<Contacts> {
+            public int compare(Contacts contact1, Contacts contact2) {
                 int result = contact1.zip.compareTo(contact2.zip);
                 if (result == 0)
                     return new CompareByName().compare(contact1, contact2);
